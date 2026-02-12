@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Sistema de caprura de imágenes</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+</head>
+<body>
+  <div class="app">
+  <aside class="sidebar">
+    <div class="card card-title">
+      <i class="bi bi-usb-plug icon disconnected"></i>
+      <i class="bi bi-usb-plug-fill icon connected"></i>
+      <span>Conexión</span>
+    </div>
+
+    <div class="card">
+      <div class="status desconectado" id="status">
+        <i class="bi bi-x-octagon-fill"></i>Desconectado
+      </div>
+
+      <div class="btn-center">
+        <button class="Conectar_btn" id="btnToggle">Conectar</button>
+      </div>
+
+      <div class="row">
+        <button id="btnRefreshPorts">Actualizar lista</button>
+      </div>
+
+      <select id="portSelect">
+        <option value="">Auto (primer puerto)</option>
+      </select>
+    </div>
+
+    <div class="card">
+      <h2>Tipo de luz</h2>
+      <label><input type="radio" name="mode" value="blanco" checked> Blanco</label>
+      <label><input type="radio" name="mode" value="uv"> 365 nm</label>
+      <label><input type="radio" name="mode" value="violeta"> 405 nm</label>
+      <label><input type="radio" name="mode" value="azul"> 455 nm</label>
+      <button id="btnApplyMode">Aplicar luz</button>
+    </div>
+
+        <div class="card">
+      <h2>Intensidad</h2>
+
+      <div class="slider-wrap">
+        <input id="intSlider"
+              class="int-slider"
+              type="range"
+              min="0" max="5" step="1" value="0">
+
+        <div class="slider-scale">
+          <span>0</span><span>1</span><span>2</span>
+          <span>3</span><span>4</span><span>5</span>
+        </div>
+      </div>
+
+      <div class="current-value">
+        Valor actual: <span id="intValue">0</span>
+      </div>
+
+      <button id="btnApplyIntensity">Aplicar intensidad</button>
+    </div>
+
+  </aside>
+
+  <main class="main">
+    <!-- NUEVO: barra encima del video -->
+     <div class="viewer-header">
+          <div class="title">📷 Captura de imágenes
+          </div>
+    <div class="topbar">
+  
+      <div class="topbar-group">
+
+        <h2>Cámara</h2>
+        <label>Índice:
+          <input id="camIndex" type="number" min="0" max="2" value="1">
+        </label>
+        <button id="btnCamStart">Iniciar vista</button>
+        <button id="btnCamStop">Detener vista</button>
+      </div>
+
+      <div class="topbar-group">
+        <h2>Captura</h2>
+        <label>Número:
+          <input id="nImages" type="number" min="1" max="500" value="25">
+        </label>
+        <label>Carpeta:
+          <input id="folderName" type="text" value="Sesion_01">
+        </label>
+        <button id="btnCapture">Capturar serie</button>
+        <div class="muted" id="captureInfo"></div>
+      </div>
+
+      <div class="topbar-group">
+        <h2>Zoom (visual)</h2>
+        <button id="zoomIn">Zoom +</button>
+        <button id="zoomOut">Zoom -</button>
+        <button id="zoomReset">Reset</button>
+        <div class="muted"><span id="zoomVal">1.00x</span></div>
+      </div>
+    </div>
+
+    <div class="video-shell">
+      <img id="video" src="/video_feed" alt="video">
+    </div>
+  </main>
+</div>
+
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

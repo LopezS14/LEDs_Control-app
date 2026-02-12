@@ -1,0 +1,482 @@
+:root{
+  --bg: #1e1e1e;
+  --panel: #252526;
+  --text: #ffffff;
+  --muted: #cfcfcf;
+  --accent: #00ff7f;
+  --border: #333;
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  margin: 0;
+  font-family: Segoe UI, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* =========================
+   GRID PRINCIPAL
+========================= */
+.app{
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar{
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* Tarjetas */
+.card{
+  background: #2a2a2a;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  margin: 14px 0;
+}
+
+.card h2{
+  margin: 0 0 10px 0;
+  font-size: 14px;
+}
+
+.card.card-title{
+  background-color: #1f1f1f;
+}
+
+.card-title{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  padding: 16px;
+}
+
+/* Estado */
+.status{
+  margin: 15px 0 8px 0;
+  font-weight: 600;
+  text-align: center;
+}
+.status.desconectado{ color: red; }
+.status.conectado{ color: #00ff7f; }
+
+/* Botón conectar */
+.Conectar_btn{
+  background-color: #4caf50;
+  color: white;
+  font-size: 24px;
+  padding: 14px 0;
+  width: 100%;
+  border-radius: 16px;
+  border: 2px solid #e0e0e0;
+  margin: 12px 0;
+  cursor: pointer;
+}
+.Conectar_btn.desconectar{
+  background-color: #e53935;
+}
+
+/* Layout de filas */
+.row{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Labels base */
+label{
+  display: block;
+  margin: 6px 0;
+}
+
+/* Inputs base (para sidebar) */
+select,
+input[type="number"],
+input[type="text"]{
+  width: 100%;
+  margin-top: 6px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #111;
+  color: var(--text);
+}
+
+/* Botones base */
+button{
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.10);
+  color: #fff;
+}
+
+/* Muted */
+.muted{
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* =========================
+   MAIN
+========================= */
+.main{
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  padding: 10px;
+  gap: 10px;
+}
+
+/* =========================
+   TOPBAR estilo referencia (compacta)
+========================= */
+.topbar{
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;
+  padding: 10px 12px;
+  margin: 0;
+
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+
+  overflow: hidden;
+}
+
+/* Grupos sin “caja” (para no gastar espacio) */
+.topbar-group{
+  flex: 0 1 auto;
+  min-width: unset;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+/* Títulos en línea */
+.topbar-group h2{
+  margin: 0 10px 0 0;
+  font-size: 14px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+/* Labels en línea */
+.topbar-group label{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  white-space: nowrap;
+}
+
+/* IMPORTANTÍSIMO:
+   en topbar NO queremos width:100% de inputs globales */
+.topbar input[type="number"],
+.topbar input[type="text"],
+.topbar select{
+  width: auto !important;
+  min-width: 120px;
+  height: 36px;
+  padding: 6px 10px;
+  margin: 0 !important;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.55);
+  color: var(--text);
+  outline: none;
+}
+
+/* Botones compactos */
+.topbar button{
+  height: 36px;
+  padding: 0 12px;
+  font-size: 13px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.10);
+  color: #fff;
+}
+
+/* Botón verde (si lo usas para “Descargar PNG”) */
+.topbar .btn-success{
+  background: rgba(106, 170, 80, 0.85);
+  border-color: rgba(106, 170, 80, 0.95);
+}
+
+/* Slider “Grosor” */
+.topbar input[type="range"]{
+  width: 160px;
+  height: 6px;
+  accent-color: #4d89ff;
+}
+
+/* Texto pequeño */
+.topbar .muted{
+  margin: 0;
+  font-size: 12px;
+  color: rgba(255,255,255,0.70);
+}
+
+/* =========================
+   VIDEO: ocupa todo abajo, rectangular
+========================= */
+.video-shell{
+  flex: 1 1 auto;
+  min-height: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Feed llena el contenedor */
+#video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* llena y recorta si hace falta */
+  display: block;
+  transform-origin: center center;
+}
+
+/* =========================
+   ZOOM EN VERTICAL + LLENA HUECO DERECHO
+   (asume que Zoom es el 3er .topbar-group)
+========================= */
+.topbar-group:nth-child(3){
+  display: grid;
+  grid-template-columns: 1fr 140px;   /* derecha para botones */
+  grid-template-rows: auto 1fr;
+  column-gap: 12px;
+  align-items: start;
+  height: 100%;                      /* que estire dentro del área */
+}
+
+/* Título arriba izquierda */
+.topbar-group:nth-child(3) h2{
+  grid-column: 1 / 2;
+  grid-row: 1;
+  margin: 0 0 6px 0;
+}
+
+/* El 1.00x (tu <span id="zoomVal">) debajo del título */
+.topbar-group:nth-child(3) #zoomVal{
+  grid-column: 1 / 2;
+  grid-row: 2;
+  align-self: start;
+}
+
+/* Contenedor de botones (si NO tienes contenedor, aplica a los botones directos) */
+.topbar-group:nth-child(3) button{
+  width: 100%;
+  margin: 0 0 8px 0;
+}
+
+/* Coloca los 3 botones en la columna derecha, apilados */
+.topbar-group:nth-child(3) #zoomIn,
+.topbar-group:nth-child(3) #zoomOut,
+.topbar-group:nth-child(3) #zoomReset{
+  grid-column: 2 / 3;
+}
+
+/* orden vertical */
+.topbar-group:nth-child(3) #zoomIn{  grid-row: 1; align-self: start; }
+.topbar-group:nth-child(3) #zoomOut{ grid-row: 2; align-self: start; }
+.topbar-group:nth-child(3) #zoomReset{grid-row: 3; align-self: start; }
+
+/* Para que el bloque use el alto disponible y no se vea "corto" */
+.topbar-group:nth-child(3){
+  min-height: 120px;
+}
+/* =========================
+   AJUSTES FINOS (sin cambiar tu layout)
+========================= */
+
+/* 1) En el topbar reduce un poco el espacio entre elementos */
+.topbar{
+  gap: 8px 10px;        /* antes: 10px 12px */
+}
+
+/* 2) Quita márgenes extra en inputs y botones del topbar (para que "Captura" quede más junto) */
+.topbar input[type="number"],
+.topbar input[type="text"],
+.topbar select{
+  margin: 0 !important; /* ya lo tenías, lo reafirmamos */
+}
+
+.topbar button{
+  margin: 0;            /* elimina separación lateral heredada/implícita */
+}
+
+/* 3) Zoom: fuerza que los botones queden realmente juntos */
+.topbar-group:nth-child(3){
+  grid-template-columns: 1fr 160px;   /* un poco más ancho para que no se “despeguen” */
+  grid-template-rows: auto auto auto; /* 3 filas reales para los 3 botones */
+  column-gap: 10px;                  /* menos espacio entre texto y columna de botones */
+  row-gap: 6px;                      /* separación vertical controlada */
+  min-height: unset;                 /* evita que crezca y genere huecos visuales */
+}
+
+/* título y valor a la izquierda, botones a la derecha */
+.topbar-group:nth-child(3) h2{
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+}
+
+.topbar-group:nth-child(3) #zoomVal{
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
+}
+
+/* botones: juntos, misma columna, sin margen */
+.topbar-group:nth-child(3) #zoomIn{ 
+  grid-column: 2; grid-row: 1;
+}
+.topbar-group:nth-child(3) #zoomOut{
+  grid-column: 2; grid-row: 2;
+}
+.topbar-group:nth-child(3) #zoomReset{
+  grid-column: 2; grid-row: 3;
+}
+
+.topbar-group:nth-child(3) button{
+  width: 100%;
+  margin: 0 !important;  /* esto es lo que los pega */
+}
+/* =========================
+   TOPBAR MÁS BAJO (más espacio para video)
+========================= */
+.main{
+  padding: 8px;
+  gap: 8px;
+}
+
+.topbar{
+  padding: 8px 10px;     /* antes 10px 12px */
+  gap: 6px 8px;          /* más compacto */
+}
+
+.topbar-group h2{
+  font-size: 13px;
+  margin-right: 8px;
+}
+
+.topbar input[type="number"],
+.topbar input[type="text"],
+.topbar select{
+  height: 32px;          /* antes 36px */
+  min-width: 110px;
+  padding: 5px 9px;
+}
+
+.topbar button{
+  height: 32px;          /* antes 36px */
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+/* =========================
+   ZOOM VERTICAL COMPACTO (sin inflar el topbar)
+   (Zoom = 3er .topbar-group)
+========================= */
+.topbar-group:nth-child(3){
+  display: grid;
+  grid-template-columns: 1fr 140px;   /* texto + columna botones */
+  grid-template-rows: auto auto auto; /* 3 filas (Zoom+, Zoom-, Reset) */
+  column-gap: 6px;
+  row-gap: 6px;
+  align-items: start;
+  margin-top: -45px;
+
+  min-height: unset;      /* IMPORTANTÍSIMO: no crecer */
+  height: auto;           /* no forzar estiramiento */
+}
+
+.topbar-group:nth-child(3) h2{
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+}
+
+.topbar-group:nth-child(3) #zoomVal{
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
+}
+
+/* botones verticales juntos */
+.topbar-group:nth-child(3) #zoomIn{    grid-column: 2; grid-row: 1; }
+.topbar-group:nth-child(3) #zoomOut{   grid-column: 2; grid-row: 2; }
+.topbar-group:nth-child(3) #zoomReset{ grid-column: 2; grid-row: 3; }
+
+.topbar-group:nth-child(3) button{
+  width: 100%;
+  margin: 0 !important;
+}
+
+/* =========================
+   VIDEO: máximo espacio
+========================= */
+.video-shell{
+  flex: 1 1 auto;
+  min-height: 0;
+  border-radius: 14px;  /* un poco menos para ganar píxeles útiles */
+}
+
+#video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.viewer-header{
+font-size:larger;
+text-align: center;
+}
+/*Slider de la intensidad*/
+.slider-wrap {
+  width: 100%;
+}
+
+.int-slider {
+  width: 100%;
+}
+
+.slider-scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
