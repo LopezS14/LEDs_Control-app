@@ -1,15 +1,15 @@
 # LED Flask App
 
-Sistema web para monitorear en tiempo real la **temperatura y humedad** obtenidas mediante un sensor.
+Sistema web desarrollado con **Flask** para controlar un microcontrolador conectado a un sistema de iluminación y realizar la captura de imágenes para su posterior procesamiento.
 
 ## Tecnologías
 
 * Python
 * Flask
-* PostgreSQL
-* Docker
+* HTML
 * JavaScript
 * CSS
+* Computer Vision
 
 ## Instalación
 
@@ -27,8 +27,10 @@ Ejecutar la aplicación Flask:
 python app.py
 ```
 
-La aplicación permite visualizar y almacenar los datos del sensor mediante una interfaz web.
+La aplicación permite controlar el sistema de iluminación, visualizar imágenes en tiempo real, realizar capturas y almacenarlas para su posterior procesamiento.
 
 ## Objetivo
 
-Proyecto desarrollado para integrar **IoT, desarrollo web, bases de datos y monitoreo de datos en tiempo real**.
+Integrar **control de hardware, captura de imágenes, desarrollo web y procesamiento de imágenes** mediante una aplicación Flask.
+
+
