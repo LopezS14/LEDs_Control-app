@@ -160,7 +160,7 @@ LED_TO_FOLDER = {
     "azul": "455nm",
 }
 
-DEFAULT_BACKEND = cv2.CAP_DSHOW  # cambia a None o CAP_MSMF si falla
+DEFAULT_BACKEND = cv2.CAP_DSHOW   
 
 
 @app.get("/")
@@ -245,8 +245,7 @@ def capture_series():
     if not cam.running:
         return jsonify({"error": "La cámara no está activa"}), 400
 
-    # CLAVE: crear directorios antes de guardar
-    os.makedirs(ruta, exist_ok=True)
+     os.makedirs(ruta, exist_ok=True)
 
     threading.Thread(target=cam.save_series, args=(ruta, n), daemon=True).start()
 
