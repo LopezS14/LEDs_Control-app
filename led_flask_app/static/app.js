@@ -27,8 +27,7 @@ function getMode() {
 }
 
 function getIntensity() {
-  // Tu slider real es intSlider (no "intensity")
-  return parseInt(document.getElementById("intSlider").value, 10);
+   return parseInt(document.getElementById("intSlider").value, 10);
 }
 
 // ======================
@@ -102,8 +101,7 @@ document.getElementById("btnApplyMode").onclick = async () => {
     const mode = getMode();
     const d = await postJSON("/api/led/mode", { mode });
 
-    // backend solo regresa cmd, así que mostramos mode local
-    statusEl.textContent = `LED aplicado: ${mode} (cmd=${d.cmd})`;
+     statusEl.textContent = `LED aplicado: ${mode} (cmd=${d.cmd})`;
   } catch (e) {
     alert(e.message);
   }
@@ -127,8 +125,7 @@ document.getElementById("btnApplyIntensity").onclick = async () => {
     const level = getIntensity();
     const d = await postJSON("/api/led/intensity", { level });
 
-    // backend solo regresa cmd, así que mostramos level local
-    statusEl.textContent = `Intensidad aplicada: ${level} (cmd=${d.cmd})`;
+     statusEl.textContent = `Intensidad aplicada: ${level} (cmd=${d.cmd})`;
   } catch (e) {
     alert(e.message);
   }
